@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LMS_Backend.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a7809bccc2266a2226ffa4c0aa3b15fc3aa6cc9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+119dccac57138632d6052fa32886710bfe9e1c28")]
 [assembly: System.Reflection.AssemblyProductAttribute("LMS_Backend.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LMS_Backend.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
