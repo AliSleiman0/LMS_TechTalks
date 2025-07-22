@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Backend/LMS_Backend.Service/bin/Debug/net8.0
+/Backend/LMS_Infrastructure/bin/Debug/net8.0
