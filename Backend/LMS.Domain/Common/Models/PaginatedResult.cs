@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Academia.Core.Common.Models
+namespace LMS_BAckend.Domain.Common.Models
 {
 	public class PaginatedResult<T>
 	{

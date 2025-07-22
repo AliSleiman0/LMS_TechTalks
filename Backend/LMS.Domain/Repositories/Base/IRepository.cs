@@ -1,4 +1,4 @@
-﻿using Academia.Core.Common.Models;
+﻿using LMS_BAckend.Domain.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

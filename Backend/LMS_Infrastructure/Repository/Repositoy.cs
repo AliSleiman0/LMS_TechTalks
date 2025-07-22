@@ -1,4 +1,4 @@
-﻿using Academia.Core.Common.Models;
+﻿using LMS_BAckend.Domain.Common.Models;
 using LMS_Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
