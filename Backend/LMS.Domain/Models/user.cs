@@ -4,21 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace LMS_Backend.Domain.Models
 {
-    public class User
+    //since identity is used we dont add email and password here
+    //IdentityUser.Email to access the email
+    // IdentityUser.PasswordHash to access the password hash
+    public class User : IdentityUser
     {
+        [Required]
+        public string FirstName { get; set; } = string.Empty;
 
-        // Properties of the user class
-        [Key]
-		// TODO : ALI Kindly Used Guids Which are more sfae when exposed ( represented over 128 bits and unpredictable )!!
-		// Guid is not used here as per the original code, but it's a good practice to consider.
-		// public Guid Id { get; set; }
-		public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string LastName { get; set; } = string.Empty;
+
         [Required]
-        public string Email { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DateOfBirth { get; set; }
+
     }
 }
