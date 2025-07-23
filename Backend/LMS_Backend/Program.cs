@@ -1,8 +1,13 @@
+
 using LMS_Backend.Service.Interfaces;
-using LMS_Backend.Service.Services;
+// using LMS_Backend.Service.Services; giving error it doesnt exist
 using Microsoft.EntityFrameworkCore;
 using LMS_Infrastructure.Repository;
 using LMS_Infrastructure.Context;
+using LMS_Backend.Domain.Models;
+using Microsoft.AspNetCore.Identity;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +26,7 @@ builder.Services.AddDbContext<DBContext>(options =>
 
 // Register repository and service dependencies
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<IUserInterface, UserInterface>();
+// builder.Services.AddScoped<IUserInterface, UserInterface>(); getting not found or doesnt exist check for name files
 
 // Allow all CORS
 builder.Services.AddCors(options =>
@@ -33,6 +38,24 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
+
+//for the identity user
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    //password validation options
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredUniqueChars = 1;
+    //user needs a unique email
+    options.User.RequireUniqueEmail = true;
+
+})
+// .AddEntityFrameworkStores<DbContext>() this is giving error please check it
+.AddDefaultTokenProviders();
+
 
 var app = builder.Build();
 
