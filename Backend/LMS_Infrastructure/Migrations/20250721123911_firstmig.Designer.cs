@@ -12,7 +12,7 @@ namespace LMS_Infrastructure.Migrations
 {
     [DbContext(typeof(DBContext))]
     [Migration("20250721123911_firstmig")]
-    partial class firstmig
+    partial class Firstmig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LMS_Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class firstmig : Migration
+    public partial class Firstmig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

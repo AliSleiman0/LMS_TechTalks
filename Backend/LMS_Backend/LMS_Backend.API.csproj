@@ -12,6 +12,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.13">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,8 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LMS.Domain\LMS_Backend.Domain.csproj" />
-	  <ProjectReference Include="..\LMS_Backend.Service\LMS_Backend.Service.csproj" />
-	  <ProjectReference Include="..\LMS_Infrastructure\LMS_Infrastructure.csproj" />
+    <ProjectReference Include="..\LMS_Backend.Service\LMS_Backend.Service.csproj" />
+    <ProjectReference Include="..\LMS_Infrastructure\LMS_Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
