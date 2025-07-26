@@ -1,22 +1,14 @@
 ﻿using LMS_Backend.Domain.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
 
 namespace LMS_Infrastructure.Context
 {
-    public class DBContext : DbContext
+    public class DBContext(DbContextOptions<DBContext> options) : IdentityDbContext<User>(options)
     {
-        public DBContext(DbContextOptions<DBContext> options) : base(options)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
         }
-
-        // Correct the casing of 'user' to 'User' if the class is named 'User'
-        public DbSet<User> Users { get; set; }
     }
 }

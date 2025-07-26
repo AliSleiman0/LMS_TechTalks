@@ -1,0 +1,57 @@
+.Signup-Container {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.Signup-main {
+  width: 400px;
+  height: 480px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+.Signup-h1 {
+  text-align: center;
+}
+.Signup-form {
+  display: flex;
+  flex-direction: column;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.Signup-button {
+  font-size: larger;
+  padding: 10px;
+  margin-top: 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.Signup-button:hover {
+  background: #218838;
+}
+.login-message {
+  text-align: center;
+  margin-top: 45px;
+}
+.login-link {
+  color: #007bff;
+  text-decoration: none;
+}
+.login-link:hover {
+  text-decoration: underline;
+}
