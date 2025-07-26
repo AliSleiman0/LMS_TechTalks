@@ -13,23 +13,19 @@ namespace LMS_Infrastructure.Repository
 	// It allows for CRUD operations on any entity type T that is a class. So We Do Align With the DRY Concept 
 	// Allowing us to reuse the same code for different entities without duplicating code ( NO MORE RE_WRITING THE BOILER PLATE CODE OF THE REPO ).
 
-	public class Repository<T> : IRepository<T> where T : class
-    {
-        private readonly DBContext _context;
-
-        public Repository(DBContext context)
-        {
-            _context = context;
-        }
+	public class Repository<T>(DBContext context) : IRepository<T> where T : class
+	{
+		private readonly DBContext _context = context;
 
 		public async Task<IReadOnlyList<T>> GetAllAsync()
 		{
 			return await _context.Set<T>().ToListAsync();
 		}
 
-		public async Task<T> GetByIdAsync(Guid id)
+		public async Task<T> GetByIdAsync(string id)
 		{
-			return await _context.Set<T>().FindAsync(id);
+			var entity = await _context.Set<T>().FindAsync(id);
+			return entity ?? throw new KeyNotFoundException($"Entity of type {typeof(T).Name} with ID '{id}' was not found.");
 		}
 
 		public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate)
@@ -38,9 +34,9 @@ namespace LMS_Infrastructure.Repository
 		}
 
 		public async Task<IReadOnlyList<T>> GetAsync(
-			Expression<Func<T, bool>> predicate = null,
-			Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-			string includeString = null,
+			Expression<Func<T, bool>>? predicate = null,
+			Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+			string? includeString = null,
 			bool disableTracking = true)
 		{
 			IQueryable<T> query = _context.Set<T>();
@@ -55,9 +51,9 @@ namespace LMS_Infrastructure.Repository
 		}
 
 		public async Task<IReadOnlyList<T>> GetAsync(
-			Expression<Func<T, bool>> predicate = null,
-			Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-			List<Expression<Func<T, object>>> includes = null,
+			Expression<Func<T, bool>>? predicate = null,
+			Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+			List<Expression<Func<T, object>>>? includes = null,
 			bool disableTracking = true)
 		{
 			IQueryable<T> query = _context.Set<T>();
@@ -77,8 +73,8 @@ namespace LMS_Infrastructure.Repository
 		public async Task<PaginatedResult<T>> GetAllWithPaginationAsync(
 			int pageIndex,
 			int pageSize,
-			Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-			List<Expression<Func<T, object>>> includes = null,
+			Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+			List<Expression<Func<T, object>>>? includes = null,
 			bool disableTracking = true)
 		{
 			IQueryable<T> query = _context.Set<T>();

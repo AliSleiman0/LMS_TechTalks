@@ -1,58 +1,53 @@
-﻿using LMS_Backend.Domain.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using LMS_Backend.Service.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using LMS_BAckend.Service.DTO;
+using LMS_Backend.Service.DTO;
 
 namespace LMS_Backend.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class UserController(IUserInterface userService) : ControllerBase
     {
-        private readonly IUserInterface _userService;
+        private readonly IUserInterface _userService = userService;
 
-        public UserController(IUserInterface userService)
+        [HttpGet("GetAllUsers")]
+        public async Task<IActionResult> GetAllUsers()
         {
-            _userService = userService;
+            return Ok(await _userService.GetAllUsersAsync());
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
-        {
-            var users = await _userService.GetAllUsersAsync();
-            return Ok(users);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
+        [HttpGet("GetUser/{id}")]
+        public async Task<IActionResult> GetUserById(string id)
         {
             var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
-                return NotFound();
-            return Ok(user);
+            return user is null ? NotFound() : Ok(user);
         }
 
-        [HttpPost]
-        public async Task<ActionResult> AddUser([FromBody] User user)
+        [HttpPost("Register")]
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterDTO dto)
         {
-            await _userService.AddUserAsync(user);
-            return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+            await _userService.RegisterUserAsync(dto);
+            return Ok();
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateUser(int id, [FromBody] User user)
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginUser([FromBody] LoginDTO dto)
         {
-            if (id != user.Id)
-                return BadRequest();
-
-            await _userService.UpdateUserAsync(user);
-            return NoContent();
+            var result = await _userService.LoginUserAsync(dto);
+            return result is null ? Unauthorized() : Ok(result);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteUser(int id)
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDTO dto)
+        {
+            await _userService.UpdateUserAsync(dto);
+            return Ok();
+        }
+
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
         {
             await _userService.DeleteUserAsync(id);
             return NoContent();
