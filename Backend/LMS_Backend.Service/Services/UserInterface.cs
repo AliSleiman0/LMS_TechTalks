@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using LMS_Backend.Domain.Models;
+﻿using LMS_Backend.Domain.Models;
 using LMS_Backend.Service.DTO;
 using LMS_Backend.Service.Interfaces;
 using LMS_BAckend.Service.DTO;
-using LMS_Infrastructure.Context;
 using LMS_Infrastructure.Repository;
 using Microsoft.AspNetCore.Authorization;
 

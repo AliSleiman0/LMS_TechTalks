@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LMS_Backend.Service.Interfaces;
-using System.Threading.Tasks;
 using LMS_BAckend.Service.DTO;
 using LMS_Backend.Service.DTO;
 

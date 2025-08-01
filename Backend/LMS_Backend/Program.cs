@@ -1,43 +1,51 @@
-
 using LMS_Backend.Service.Interfaces;
-// using LMS_Backend.Service.Services; giving error it doesnt exist
-using Microsoft.EntityFrameworkCore;
+using LMS_Backend.Service.Services;
+using LMS_Backend.Domain.Models;
 using LMS_Infrastructure.Repository;
 using LMS_Infrastructure.Context;
-using LMS_Backend.Domain.Models;
-using Microsoft.AspNetCore.Identity;
-using LMS_Backend.Service.Services;
 using LMS_BAckend.Service.Mapping;
-
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+// Add controllers
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-
+// Add DbContext with MySQL
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-
+// Register repositories and services
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserInterface, UserInterface>();
+builder.Services.AddScoped<ICourseInterface, CourseInterface>();
+
+// AutoMapper
 builder.Services.AddAutoMapper(typeof(UserMapping));
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+// Identity with password settings
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    // Password validation options
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredUniqueChars = 1;
 
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<DBContext>() // This line is critical!
-    .AddDefaultTokenProviders();
+    // User email must be unique
+    options.User.RequireUniqueEmail = true;
+})
+.AddEntityFrameworkStores<DBContext>()
+.AddDefaultTokenProviders();
 
-
-// Allow all CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -48,28 +56,8 @@ builder.Services.AddCors(options =>
     });
 });
 
-//giving error
-//for the identity user
-// builder.Services.AddIdentity<User, IdentityRole>(options =>
-// {
-//     //password validation options
-//     options.Password.RequireDigit = true;
-//     options.Password.RequiredLength = 8;
-//     options.Password.RequireLowercase = true;
-//     options.Password.RequireUppercase = true;
-//     options.Password.RequireNonAlphanumeric = true;
-//     options.Password.RequiredUniqueChars = 1;
-//     //user needs a unique email
-//     options.User.RequireUniqueEmail = true;
-
-// })
-// .AddEntityFrameworkStores<DbContext>()
-// .AddDefaultTokenProviders();
-
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -80,6 +68,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowAll");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
