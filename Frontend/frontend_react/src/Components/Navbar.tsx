@@ -32,6 +32,8 @@ function NavComponent() {
                         <Nav.Link eventKey={2} href="#memes">
                             Dank memes
                         </Nav.Link>
+                        <Nav.Link href="/signin">Sign In</Nav.Link>
+                        <Nav.Link href="/signup">Sign Up</Nav.Link>
                     </Nav>  
                 </Navbar.Collapse>
             </Container>

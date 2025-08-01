@@ -7,7 +7,7 @@ const SignUpPage: React.FC = () => {
     <h1 className="Signup-h1">Sign Up</h1>
     <form className="Signup-form ">
         <input type="text" name="firstname" placeholder="First Name" required />
-                <input type="text" name="lastname" placeholder="Last Name" required />
+        <input type="text" name="lastname" placeholder="Last Name" required />
 
         <input type="email" name="email" placeholder="Email" required />
         <input type="password" name="password" placeholder="Password" required />
