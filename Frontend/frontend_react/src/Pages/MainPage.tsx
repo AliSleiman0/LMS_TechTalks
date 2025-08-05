@@ -1,26 +1,40 @@
-import React from 'react';
-import RandomButton from '../Components/Button';
-
+import React from "react";
+import learningImage from "../Images/learing.jpg";
+import "../Pages-Styles/MainPage.css";
 const MainPage: React.FC = () => {
-  const handleClick = () => {
-    alert('Random button clicked!');
-  };
+  // border: 5px solid black
 
   return (
-    <div>
-      <header style={{display:"flex",justifyContent:"end"}}>
-        <button style={{fontSize:"25px",backgroundColor:"#28a745",margin:"20px 30px 0 0"}}><a style={{textDecoration:"none",color:"white"}} href='/signin'>Sign In</a></button>
-                <button style={{fontSize:"25px",backgroundColor:"#28a745",margin:"20px 30px 0 0"}}><a style={{textDecoration:"none",color:"white"}}href='/signup'>Sign Up</a></button>
-
-      </header>
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>Welcome to the Main Page</h1>
-      <p>This is a sample page demonstrating the use of a reusable button component.</p>
-      <RandomButton onClick={handleClick} label="Click Me!" />
-      <p>Feel free to explore and customize this page.</p>
-    </div>
-    </div>
-  ); 
+    <main style={{ background: "purple" }}>
+      <div className="container">
+        <div className="text-div">
+          <p style={{ fontSize: "50px", fontWeight: "bold", color: "white" }}>
+            Welcome to My Page!
+          </p>
+          <p style={{ fontSize: "20px", color: "white", marginTop: "30px" }}>
+            Our learning website offers a wide range of courses designed to help
+            you acquire new skills in various fields, from technology to arts
+            and sciences. With interactive lessons, quizzes, and hands-on
+            projects, you can engage deeply with the material and track your
+            progress along the way.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            <button id="btn1">Start Learning</button>
+            <button className="btn2">Explore Courses</button>
+          </div>
+        </div>
+        <div className="image-div">
+          <img id="img" src={learningImage} alt="Description" />
+        </div>
+      </div>
+    </main>
+  );
 };
 
 export default MainPage;

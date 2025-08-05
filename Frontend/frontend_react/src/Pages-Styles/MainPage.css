@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+.text-div {
+  width: 500px;
+  height: auto;
+  margin: 20px;
+  text-align: center;
+}
+.image-div {
+  width: 600px;
+  height: auto;
+  margin: 30px;
+  margin-left: 100px;
+  transition: transform 2.3s;
+}
+#img {
+  width: 600x;
+  height: auto;
+  display: block;
+}
+#btn1 {
+  color: purple;
+  background-color: white;
+  width: 200px;
+  height: 50px;
+  border-radius: 15px;
+  margin-right: 20px;
+  font-size: 25px;
+  border: 2px solid purple;
+}
+.btn2 {
+  color: white;
+  background-color: purple;
+  width: 200px;
+  height: 50px;
+  border-radius: 15px;
+  margin-right: 20px;
+  font-size: 25px;
+  border: 2px solid white;
+}
+
+#btn1:hover {
+  background-color: violet;
+}
+.btn2:hover {
+  background-color: violet;
+  color: purple;
+}
+.image-div:hover {
+  transform: translateY(-20px);
+}
+@media (min-width: 350px) and (max-width: 385px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .text-div {
+    width: 90%;
+    height: auto;
+    margin: 20px;
+    text-align: center;
+  }
+  .image-div {
+    width: 90%;
+    height: 200px;
+    margin: 30px;
+  }
+  #img {
+    width: 300x;
+    height: 250px;
+    padding-bottom: 40px;
+  }
+  #btn1 {
+    color: purple;
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    margin-right: 20px;
+    font-size: 16px;
+    border: 2px solid purple;
+  }
+  .btn2 {
+    color: white;
+    background-color: purple;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    margin-right: 20px;
+    font-size: 16px;
+    border: 2px solid white;
+  }
+}
+@media (min-width: 385.1px) and (max-width: 450px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .text-div {
+    width: 90%;
+    height: auto;
+    margin: 20px;
+    text-align: center;
+  }
+  .image-div {
+    width: 90%;
+    height: 200px;
+    margin: 55px;
+  }
+  #img {
+    width: 300x;
+    height: 250px;
+    padding-bottom: 40px;
+  }
+  #btn1 {
+    color: purple;
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    margin-right: 20px;
+    font-size: 16px;
+    border: 2px solid purple;
+  }
+  .btn2 {
+    color: white;
+    background-color: purple;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    margin-right: 20px;
+    font-size: 16px;
+    border: 2px solid white;
+  }
+}

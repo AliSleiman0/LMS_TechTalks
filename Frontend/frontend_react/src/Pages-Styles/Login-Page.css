@@ -1,5 +1,4 @@
 .SignIn-container {
-  font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
@@ -7,9 +6,10 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-size: 18px;
 }
 .SignIn-main {
-  height: 370px;
+  height: 380px;
   width: 400px;
   padding: 20px;
   background: white;
@@ -18,26 +18,31 @@
 }
 .SignIn-h1 {
   text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: sans-serif;
 }
-.SignIn-SignIn-form {
+.SignIn-form {
   display: flex;
   flex-direction: column;
 }
-input[type="text"],
+input[type="email"],
 input[type="password"] {
   margin: 20px 0;
   padding: 10px;
   border: 1px solid #ccc;
+
   border-radius: 5px;
 }
 .SignIn-button {
-  font-size: larger;
-  padding: 15px;
-  margin-top: 30px;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 20px;
   background: #28a745;
   color: white;
   border: none;
   border-radius: 5px;
+  height: 50px;
   cursor: pointer;
 }
 .SignIn-button:hover {
@@ -45,7 +50,8 @@ input[type="password"] {
 }
 .signup-message {
   text-align: center;
-  margin-top: 55px;
+  margin-top: 27px;
+  font-size: 17px;
 }
 .signup-link {
   color: #007bff;
