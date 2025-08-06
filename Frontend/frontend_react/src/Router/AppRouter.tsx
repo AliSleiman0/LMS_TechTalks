@@ -5,6 +5,7 @@ import LoginPage from "../Pages/Login-Page";
 import SignUpPage from "../Pages/SignUp-Page";
 import Layout from "../Components/Layout/Layout";
 import FeaturedCourses from "../Pages/Featured-Courses-Page";
+import LandingPage from "../Pages/LandingPage";
 
 const AppRouter: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const AppRouter: React.FC = () => {
       <Routes>
         {/* Layout wrapper */}
         <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
+          <Route index element={<LandingPage />} />
           <Route path="/FCourses" element={<FeaturedCourses />} />
         </Route>
 
