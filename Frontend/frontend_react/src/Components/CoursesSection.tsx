@@ -1,8 +1,11 @@
 // src/components/CoursesSection.tsx
 import React from 'react';
 import { Container, Row, Col, Button, Badge } from 'react-bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Link } from "react-router-dom";
 
 interface CourseCardProps {
+    id: number;
     title: string;
     category: string;
     description: string;
@@ -19,6 +22,7 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({
+    id,
     title,
     category,
     description,
@@ -51,59 +55,62 @@ const CourseCard: React.FC<CourseCardProps> = ({
     };
 
     return (
-        <div className="card h-100 border-0 rounded-4 overflow-hidden shadow-sm">
-            <div className="position-relative">
-                <div className="card-image-placeholder"></div>
-                {isBestseller && (
-                    <Badge bg="success" className="course-badge position-absolute top-0 end-0 m-3">
-                        Bestseller
-                    </Badge>
-                )}
-                {isNew && (
-                    <Badge bg="primary" className="course-badge position-absolute top-0 end-0 m-3">
-                        New
-                    </Badge>
-                )}
-            </div>
-            <div className="card-body p-4">
-                <div className="d-flex justify-content-between mb-3">
-                    <Badge pill bg="primary" className="text-uppercase">
-                        {category}
-                    </Badge>
-                    <div className="d-flex align-items-center">
-                        {renderStars()}
-                        <span className="text-muted ms-2">{rating.toFixed(1)}</span>
-                    </div>
+        <Link to={`/courses/${id}`} className="text-decoration-none text-dark">
+            <div className="card h-100 border-0 rounded-4 overflow-hidden shadow-sm">
+                <div className="position-relative">
+                    <div className="card-image-placeholder"></div>
+                    {isBestseller && (
+                        <Badge bg="success" className="course-badge position-absolute top-0 end-0 m-3">
+                            Bestseller
+                        </Badge>
+                    )}
+                    {isNew && (
+                        <Badge bg="primary" className="course-badge position-absolute top-0 end-0 m-3">
+                            New
+                        </Badge>
+                    )}
                 </div>
-                <h5 className="card-title fw-bold mb-3">{title}</h5>
-                <p className="card-text text-secondary mb-4">{description}</p>
-                <div className="d-flex justify-content-between align-items-center mt-auto">
-                    <div className="d-flex align-items-center">
-                        <div className="avatar-placeholder me-3"></div>
-                        <div>
-                            <div className="fw-medium">{instructor.name}</div>
-                            <small className="text-muted">{instructor.role}</small>
+                <div className="card-body p-4">
+                    <div className="d-flex justify-content-between mb-3">
+                        <Badge pill bg="primary" className="text-uppercase">
+                            {category}
+                        </Badge>
+                        <div className="d-flex align-items-center">
+                            {renderStars()}
+                            <span className="text-muted ms-2">{rating.toFixed(1)}</span>
                         </div>
                     </div>
-                    <div>
-                        {discountPrice ? (
-                            <>
-                                <span className="fw-bold fs-5">{discountPrice}</span>
-                                <del className="text-muted ms-2">{price}</del>
-                            </>
-                        ) : (
-                            <span className="fw-bold fs-5">{price}</span>
-                        )}
+                    <h5 className="card-title fw-bold mb-3">{title}</h5>
+                    <p className="card-text text-secondary mb-4">{description}</p>
+                    <div className="d-flex justify-content-between align-items-center mt-auto">
+                        <div className="d-flex align-items-center">
+                            <div className="avatar-placeholder me-3"></div>
+                            <div>
+                                <div className="fw-medium">{instructor.name}</div>
+                                <small className="text-muted">{instructor.role}</small>
+                            </div>
+                        </div>
+                        <div>
+                            {discountPrice ? (
+                                <>
+                                    <span className="fw-bold fs-5">{discountPrice}</span>
+                                    <del className="text-muted ms-2">{price}</del>
+                                </>
+                            ) : (
+                                <span className="fw-bold fs-5">{price}</span>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
 const CoursesSection: React.FC = () => {
     const courses: CourseCardProps[] = [
         {
+            id: 1,
             title: "Complete Web Development Bootcamp 2024",
             category: "Development",
             description: "Learn to build modern web applications with HTML, CSS, JavaScript, React, Node.js and more.",
@@ -114,6 +121,7 @@ const CoursesSection: React.FC = () => {
             isBestseller: true
         },
         {
+            id: 2,
             title: "Data Science & Machine Learning Masterclass",
             category: "Data Science",
             description: "Master Python, TensorFlow, and machine learning algorithms for data analysis and predictions.",
@@ -123,6 +131,7 @@ const CoursesSection: React.FC = () => {
             isNew: true
         },
         {
+            id: 3,
             title: "UI/UX Design with Figma: From Beginner to Pro",
             category: "Design",
             description: "Learn to design beautiful and functional user interfaces with modern design tools and principles.",
