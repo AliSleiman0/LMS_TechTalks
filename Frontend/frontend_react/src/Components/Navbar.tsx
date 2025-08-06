@@ -1,4 +1,5 @@
 import { GraduationCap } from 'lucide-react';
+import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -6,35 +7,24 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavComponent() {
     return (
-        <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="navbar-custom bg-white sticky-top py-3 shadow-sm">
             <Container>
-                <GraduationCap size={32} className="text-primary" />
-                <Navbar.Brand href="#home">EduMax</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
-                        </NavDropdown>
+                <Navbar.Brand href="#" className="fw-bold fs-3 text-primary">
+                    <i className="bi bi-journal-bookmark-fill me-2"></i>LearnHub
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarNav" />
+                <Navbar.Collapse id="navbarNav">
+                    <Nav className="ms-auto me-lg-4">
+                        <Nav.Link href="#" className="fw-medium active">Home</Nav.Link>
+                        <Nav.Link href="#" className="fw-medium">Courses</Nav.Link>
+                        <Nav.Link href="#" className="fw-medium">For Instructors</Nav.Link>
+                        <Nav.Link href="#" className="fw-medium">About</Nav.Link>
+                        <Nav.Link href="#" className="fw-medium">Contact</Nav.Link>
                     </Nav>
-                    <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                        <Nav.Link href="/signin">Sign In</Nav.Link>
-                        <Nav.Link href="/signup">Sign Up</Nav.Link>
-                    </Nav>  
+                    <div className="d-flex gap-2">
+                        <Button variant="outline-primary" className="px-4">Login</Button>
+                        <Button variant="primary" className="px-4">Sign Up</Button>
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

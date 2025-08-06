@@ -1,9 +1,7 @@
 // border: 5px solid black
 
 import "../Pages-Styles/Featured-Courses-Page.css";
-import WebDev from "../Images/WebDev.jpg";
-import DataScience from "../Images/data-science.jpg";
-import UIUx from "../Images/UiUx.jpg";
+
 
 const FeaturedCourses: React.FC = () => {
   return (
@@ -13,7 +11,7 @@ const FeaturedCourses: React.FC = () => {
       <div className="Course-container">
         <div className="Course-Content">
           <img
-            src={WebDev}
+                      src="/Images/WebDev.jpg"
             alt="Description"
             style={{
               width: "270px",
@@ -31,7 +29,7 @@ const FeaturedCourses: React.FC = () => {
 
         <div className="Course-Content">
           <img
-            src={DataScience}
+                      src="/Images/data-science.jpg"
             alt="Description"
             style={{
               width: "270px",
@@ -49,7 +47,7 @@ const FeaturedCourses: React.FC = () => {
 
         <div className="Course-Content">
           <img
-            src={UIUx}
+                      src="/Images/UiUx.jpg"
             alt="Description"
             style={{
               width: "270px",
